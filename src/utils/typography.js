@@ -1,5 +1,5 @@
 export const primaryFont = 'PoppinsRegular';
-export const primaryFontMedium = 'PoppinsMedium';
+export const primaryFontMedium = '"PoppinsMedium", sans-serif';
 
 
 export const typeScale = {

@@ -1,11 +1,12 @@
 import {createGlobalStyle} from 'styled-components';
 import Poppins from "./fonts/Poppins-Regular.ttf";
 import PoppinsMedium from "./fonts/Poppins-Medium.ttf";
-// import {normalize} from "polished"
+import {normalize} from "polished"
 
 
 export const GlobalStyle = createGlobalStyle`
 
+${normalize()};
 
 html {
   font-size: 16px;

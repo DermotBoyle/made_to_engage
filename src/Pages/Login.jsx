@@ -1,5 +1,9 @@
-import React from 'react';
-import {LoginCoverContainer, PrimaryContainer} from "../Components"
+import React, {useState} from 'react';
+import SignUp from "./SignUp";
+import Register from "./Register";
+import {LoginCoverContainer, PrimaryContainer} from "../Components";
+import Toggle from '../Components/Toggle';
+
 
 
 
@@ -7,10 +11,21 @@ import {LoginCoverContainer, PrimaryContainer} from "../Components"
 
 const Login = () => {
 
+const [activeState, setActiveState] = useState('SignUp')
+
+const toggleSignUp = (type) => {
+    if ( type === 'SignUp'){
+        setActiveState('SignUp')
+    } else {
+        setActiveState('Register')
+    }
+}
+
 return(
         <LoginCoverContainer>
             <PrimaryContainer>
-            <h1 style={{color :'white'}}>Hi world!</h1>
+                <Toggle activeState={activeState} changeSignUp={toggleSignUp}/>
+                {activeState === 'SignUp' ? <SignUp /> : <Register />}
             </PrimaryContainer>
         </LoginCoverContainer>
     )

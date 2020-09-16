@@ -21,3 +21,19 @@ background-color: ${props => props.theme.backgroundPrimary};
 border-radius: 4px;
 `
 
+export const ToggleContainer = styled.div`
+display: flex;
+width: 85%;
+background: ${props => props.theme.deactiveButton};
+height: 3.5em;
+margin: auto;
+margin-top: 42px;
+`
+
+export const NameContainer = styled.div`
+display: flex;
+justify-content: space-between;
+width: 85%;
+margin: 24px auto;
+` 
+
