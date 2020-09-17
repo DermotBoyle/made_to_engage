@@ -30,10 +30,26 @@ margin: auto;
 margin-top: 42px;
 `
 
-export const NameContainer = styled.div`
+export const NameContainer = styled.span`
+position: relative;
 display: flex;
 justify-content: space-between;
 width: 85%;
 margin: 24px auto;
+
+.has-error{
+    border: solid 1px red;
+}
 ` 
+
+export const EmailPasswordContainer = styled.div`
+ width: 100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+
+ .has-error{
+     border: solid 1px red;
+ }
+`
 

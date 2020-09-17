@@ -12,5 +12,25 @@ font-size: ${typeScale.Header2};
 :focus{
     outline: none;
 }
+
+:hover{
+background-color: ${props => props.theme.activeButton};
+color : ${props => props.theme.activeButtonText}
+-webkit-transition: 1000ms linear;
+-ms-transition: 1000ms linear;
+transition: 1000ms linear;
+}
+`
+
+export const SubmitButton = styled.button`
+font-family: ${props => props.theme.primaryFontBold};
+font-size: ${typeScale.Header2};
+display: block;
+background: ${props => props.theme.activeButton};
+margin: auto;
+height: 3em;
+width: 85%;
+color: ${props => props.theme.activeButtonText};
+border: none;
 `
 

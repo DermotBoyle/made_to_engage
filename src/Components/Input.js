@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 
 export const NameInput = styled.input`
-font-family: ${props => props.theme.primaryFont};
+font-family: ${props => props.theme.primaryFontMedium};
+color: ${props => props.theme.activeButtonText};
 width: 47%;
 height: 3em;
 border:  1px solid ${props => props.theme.deactiveButtonText};
@@ -22,4 +23,16 @@ padding: 0 8px;
 :focus::placeholder{
     opacity: 0;
 }
+
+:invalid{
+  border: 1px solid red;
+}
+
 `
+
+export const EmailInput = styled(NameInput)`
+margin: 0 auto 24px;
+width: 85%;
+`
+
+export const PasswordInput = styled(EmailInput)``
