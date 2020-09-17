@@ -1,8 +1,9 @@
-import styled from 'styled-components';
+import { Field } from 'formik';
+import styled, { css } from "styled-components";
 
 
 
-export const NameInput = styled.input`
+export const NameInput = styled(Field)`
 font-family: ${props => props.theme.primaryFontMedium};
 color: ${props => props.theme.activeButtonText};
 width: 47%;
@@ -24,9 +25,29 @@ padding: 0 8px;
     opacity: 0;
 }
 
-:invalid{
-  border: 1px solid red;
-}
+${({ error }) =>
+error &&
+css`
+  border: 1px solid rgb(191, 49, 12);
+  outline: none;
+
+  &:focus,
+  &:active {
+    box-shadow: rgb(244, 129, 116) 0px 0px 2px 1px, rgb(251, 178, 174) 0px 0px
+        0px 3px;
+    border: 1px solid rgb(191, 49, 12);
+    outline: none;
+  }
+
+  /* Autocomplete styles in Chrome*/
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    border: 1px solid rgb(191, 49, 12);
+  }
+`}
+
+
 
 `
 

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { Formik, Form } from 'formik';
 import {
   NameContainer,
   EmailPasswordContainer,
@@ -8,159 +9,92 @@ import { NameInput, EmailInput, PasswordInput } from "../Components/Input";
 import { Description } from "../Components/Text";
 
 const SignUp = () => {
-  const [error, setError] = useState();
-  const [firstname, setFirstname] = useState("");
-  const [firstnameAccepted, setFirstnameAccepted] = useState('');
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [emailAccepted, setEmailAccepted] = useState(null);
-  const [password, setPassword] = useState("");
-  const [passwordAccepted, setPasswordAccepted] = useState(null);
+ 
 
-  const setInputData = (event) => {
-    let data = event.target.value;
-    let id = event.target.id;
-
-    switch (id) {
-      case "firstname":
-        setFirstname(data);
-        break;
-
-      case "lastname":
-        setLastname(data);
-        break;
-
-      case "email":
-        setEmail(data);
-        isEmailValid(data);
-        break;
-
-      case "password":
-        setPassword(data);
-        isPasswordValid(data);
-        break;
-
-      default:
-        break;
+  function validateName(value) {
+    let error;
+    if (!value) {
+      error = 'Required';
     }
-  };
-
-  const isEmailValid = (data) => {
-      //test simple regex for emails      
-      let emailRegex = /\S+@\S+\.\S+/
-
-      if(data.match(emailRegex)){
-        setEmailAccepted(true);
-      } else {
-          setEmailAccepted(false);
-      }     
+    return error;
   }
 
-  const isPasswordValid = (data) => {
-        //test simple regex for passwords requirements      
-        let passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
-        if(data.match(passwordRegex)){            
-          setPasswordAccepted(true);
-        } else {
-            setPasswordAccepted(false);
-        }
+  function validateEmail(value) {
+    let error;
+    if (!value) {
+      error = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+      error = 'Invalid email address';
+    }
+    return error;
   }
-
-
-  const verifyFormData = () => {
-
-    // let emptyPass = findEmptyInputApplyLabel();
-    let emailPass =  verifyEmail();
-    let passwordPass = verifyPassword();
-
-    if(emailPass && passwordPass){
-
-        //apply some password salting && encryption etc here
-
-        let personalDetails = {
-            firstname : firstname,
-            lastname : lastname,
-            email : email,
-            password : password,
-        }
-        sendDataToApi(personalDetails);
-    }   
-  };
-
-  const sendDataToApi = (personalDetails) => {
-    alert(personalDetails);
-  }
-
-  const verifyEmail = () => {    
-    if(emailAccepted){
-      return true  
-    } else {
-        setError('email');
-    }    
-  }
-
-  const verifyPassword = () => {
-      if(passwordAccepted){
-        return true
-      } else {
-          setError('password')
-      }
-  } 
-
-  const checkIsEmpty = (e) => {
-        let valueOfInput = e.target.value;
-        if(valueOfInput === ''){
-            setError(e.target.id)
-        }        
-  }
-
 
   return (
     <>
       <Description>Sign Up for Free</Description>
-      <form>
+
+      <Formik
+       initialValues={{
+         firstname : '',
+         lastname: '',
+         email: '',
+         password: '',
+       }}
+       onSubmit={values => {
+         console.log(values);
+       }}
+     >
+       {({ errors, touched, isValidating }) => (
+      <Form>
         <NameContainer>
           <NameInput
-            className={error === "firstname" ? "has-error" : ""}
+            validate={validateName}  
+            name="firstname"          
             id="firstname"
             type="text"
             placeholder="Firstname*"
             aria-required="true"
-            onChange={(e) => setInputData(e)}
-            onBlur={(e) => checkIsEmpty(e)}
+            error={errors.firstname && touched.firstname}           
           />
-          <NameInput
-            className={error === "lastname" ? "has-error" : ""}
+          <NameInput  
+            validate={validateName}  
+            name="lastname"         
             type="text"
             id="lastname"
             placeholder="Lastname*"
-            aria-required="true"
-            onChange={(e) => setInputData(e)}
-            onBlur={(e) => checkIsEmpty(e)}
+            aria-required="true"  
+            error={errors.lastname && touched.lastname}        
+          
           />
         </NameContainer>
         <EmailPasswordContainer>
           <EmailInput
-            className={error === "email" ? "has-error" : ""}
+            validate={validateEmail} 
+            name="email"
             type="email"
             placeholder="Email*"
             id="email"
             aria-required="true"
-            onChange={(e) => setInputData(e)}
+            error={errors.email && touched.email}        
+
           />
           <PasswordInput
-            className={error === "password" ? "has-error" : ""}
+            name="password"            
             type="password"
             placeholder="Password*"
             id="password"
             aria-required="true"
-            onChange={(e) => setInputData(e)}
+            error={errors.password && touched.password}
           />
         </EmailPasswordContainer>
-      </form>
-      <SubmitButton type="submit" onClick={() => verifyFormData()}>
+        <SubmitButton type="submit">
         GET STARTED
       </SubmitButton>
+      </Form>
+)}
+
+      </Formik>
+    
     </>
   );
 };
