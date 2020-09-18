@@ -15,8 +15,9 @@ background-color: ${props => props.theme.backgroundSecondary};
 `
 
 export const PrimaryContainer = styled.div`
+positon: relative;
 width: 95%;
-height: 95%;
+height: fit content;
 background-color: ${props => props.theme.backgroundPrimary};
 border-radius: 4px;
 `
@@ -53,3 +54,20 @@ export const EmailPasswordContainer = styled.div`
  }
 `
 
+export const SignUpContainer = styled.div`
+position: ${props => props.isActive ? 'none' : 'absolute'};
+visibility: ${props => props.isActive ? 'visible' : 'hidden'};
+opacity: ${props => props.isActive ? 1 : 0};
+-webkit-transition: opacity .4s linear;
+-ms-transition: opacity .4s linear;
+transition: opacity .4s linear;
+`
+
+export const LoginContainer = styled.div`
+position: ${props => props.isActive ? 'none' : 'absolute'};
+visibility: ${props => props.isActive ? 'visible' : 'hidden'};
+opacity: ${props => props.isActive ? 1 : 0};
+-webkit-transition: opacity .4s linear;
+-ms-transition: opacity .4s linear;
+transition: opacity .4s linear;
+`

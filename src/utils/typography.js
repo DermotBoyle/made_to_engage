@@ -7,4 +7,5 @@ export const typeScale = {
     Header1 : '32px',
     Header2: '24px',
     Input: '18px',
+    Link: '16px'
 }

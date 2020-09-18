@@ -28,14 +28,14 @@ padding: 0 8px;
 ${({ error }) =>
 error &&
 css`
-  border: 1px solid rgb(191, 49, 12);
+  border: 2px solid rgb(191, 49, 12);
   outline: none;
 
   &:focus,
   &:active {
     box-shadow: rgb(244, 129, 116) 0px 0px 2px 1px, rgb(251, 178, 174) 0px 0px
         0px 3px;
-    border: 1px solid rgb(191, 49, 12);
+    border: 2px solid rgb(191, 49, 12);
     outline: none;
   }
 
@@ -43,7 +43,7 @@ css`
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
-    border: 1px solid rgb(191, 49, 12);
+    border: 2px solid rgb(191, 49, 12);
   }
 `}
 

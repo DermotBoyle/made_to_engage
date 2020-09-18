@@ -4,11 +4,12 @@ import {
   NameContainer,
   EmailPasswordContainer,
   SubmitButton,
+  SignUpContainer
 } from "../Components";
 import { NameInput, EmailInput, PasswordInput } from "../Components/Input";
 import { Description } from "../Components/Text";
 
-const SignUp = () => {
+const SignUp = ({isActive}) => {
  
 
   function validateName(value) {
@@ -29,8 +30,18 @@ const SignUp = () => {
     return error;
   }
 
+  function validatePassword(value) {
+    let error;
+    if(!value){
+      error = 'Required';
+    } else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm.test(value)){
+      error = "Password requires at least one capital letter, symbol, number and at least 8 characters"
+    }
+    return error;
+  }
+
   return (
-    <>
+    <SignUpContainer isActive={isActive}>
       <Description>Sign Up for Free</Description>
 
       <Formik
@@ -79,6 +90,7 @@ const SignUp = () => {
 
           />
           <PasswordInput
+            validate={validatePassword}
             name="password"            
             type="password"
             placeholder="Password*"
@@ -95,7 +107,7 @@ const SignUp = () => {
 
       </Formik>
     
-    </>
+    </SignUpContainer>
   );
 };
 

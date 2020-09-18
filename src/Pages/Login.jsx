@@ -25,7 +25,8 @@ return(
         <LoginCoverContainer>
             <PrimaryContainer>
                 <Toggle activeState={activeState} changeSignUp={toggleSignUp}/>
-                {activeState === 'SignUp' ? <SignUp /> : <Register />}
+                <SignUp isActive={activeState === 'SignUp'} />                 
+                <Register isActive={activeState === 'Register'} />
             </PrimaryContainer>
         </LoginCoverContainer>
     )

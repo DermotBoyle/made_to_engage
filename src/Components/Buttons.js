@@ -28,6 +28,7 @@ font-size: ${typeScale.Header2};
 display: block;
 background: ${props => props.theme.activeButton};
 margin: auto;
+margin-bottom: 1.5em;
 height: 3em;
 width: 85%;
 color: ${props => props.theme.activeButtonText};
