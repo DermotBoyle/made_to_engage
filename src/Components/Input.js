@@ -25,6 +25,16 @@ padding: 0 8px;
     opacity: 0;
 }
 
+@media only screen and (max-width: 768px) {
+  width: 100%;
+  margin: .8em 0;
+  
+  @media only screen and (max-width: 380px) {
+    height: 2em;
+}
+
+}
+
 ${({ error }) =>
 error &&
 css`
@@ -46,14 +56,16 @@ css`
     border: 2px solid rgb(191, 49, 12);
   }
 `}
-
-
-
 `
 
 export const EmailInput = styled(NameInput)`
+position: relative;
 margin: 0 auto 24px;
 width: 85%;
+
+@media only screen and (max-width: 380px) {
+  height: 2em;
+}
 `
 
 export const PasswordInput = styled(EmailInput)``

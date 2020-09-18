@@ -20,6 +20,11 @@ color : ${props => props.theme.activeButtonText}
 -ms-transition: 1000ms linear;
 transition: 1000ms linear;
 }
+
+@media only screen and (max-width: 380px) {
+    font-size: 20px;
+    height: 2em;
+}
 `
 
 export const SubmitButton = styled.button`
@@ -33,5 +38,12 @@ height: 3em;
 width: 85%;
 color: ${props => props.theme.activeButtonText};
 border: none;
+
+
+@media only screen and (max-width: 380px) {
+    height: 2em;
+    font-size: 20px;
+}
+
 `
 
