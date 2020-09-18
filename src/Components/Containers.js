@@ -30,10 +30,6 @@ width: 70%;
 @media only screen and (max-width: 770px) {
 width: 90%
 }
-
-@media only screen and (max-width: 340px) {
-    height: 90%
-    }
 `
 
 export const PrimaryContainer = styled.div`
