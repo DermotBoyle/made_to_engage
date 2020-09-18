@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import SignUp from "./SignUp";
-import Register from "./Register";
+import Register from "./SignIn";
 import {LoginCoverContainer, PrimaryContainer} from "../Components";
 import Toggle from '../Components/Toggle';
 

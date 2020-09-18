@@ -12,7 +12,7 @@ import {
   InputContainer,
 } from "../Components";
 
-const Register = ({ isActive }) => {
+const SignIn = ({ isActive }) => {
  
   function validatePassword(value) {
     let error;
@@ -74,4 +74,4 @@ const Register = ({ isActive }) => {
   );
 };
 
-export default Register;
+export default SignIn;
